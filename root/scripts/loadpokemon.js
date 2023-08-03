@@ -77,12 +77,12 @@ export async function loadPokemons(url) {
       }
     }
     $containerPokemons.innerHTML = $template;
-    $prevLink = json.previous ? `<a href="${json.previous}">⏮️</a>` : "";
-    $nextLink = json.next ? `<a href="${json.next}">⏭️</a>` : "";
+    $prevLink = json.previous ? `<a href="${json.previous}">BACK</a>` : "";
+    $nextLink = json.next ? `<a href="${json.next}">NEXT</a>` : "";
     $linksPaginacion.innerHTML = $prevLink + " " + $nextLink;
   } catch (err) {
     //console.log(err);
-    let message = err.statusText || "Ocurriò un error";
+    let message = err.statusText || "Ocurrio un error";
     $containerPokemons.innerHTML = `<p> Error ${err.status}:${message}</p>`;
   }
 }

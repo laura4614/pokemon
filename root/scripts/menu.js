@@ -1,11 +1,17 @@
-import menu_hamburguesa from "./menu.js";
-import { loadPokemons, filtrarPokemons } from "./loadpokemon.js";
-import darkTheme from "./dark-theme.js";
+export default function hamburguerMenu(btnPanel, menuPanel, menuLink) {
+  const $btnPanel = document.querySelector(btnPanel);
+  const $menuPanel = document.querySelector(menuPanel);
 
-document.addEventListener("DOMContentLoaded", (e) => {
-  menu_hamburguesa(".menu-btn", ".menu", ".menu a");
-  loadPokemons("https://pokeapi.co/api/v2/pokemon/");
-  filtrarPokemons(".links-type-pokemon a");
-});
+  document.addEventListener("click", (e) => {
+    if (e.target.matches(btnPanel) || e.target.matches(`${btnPanel} *`)) {
+      $menuPanel.classList.toggle("is-active");
+      $btnPanel.classList.toggle("is-active");
+    }
 
-darkTheme(".btn-dark-mode", "dark-mode");
+    if (e.target.matches(menuLink)) {
+      $menuPanel.classList.remove("is-active");
+      $btnPanel.classList.remove("is-active");
+    }
+  });
+}
+  
